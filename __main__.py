@@ -12,4 +12,9 @@ def setRotate():
 
     return setrotatevec
 
+
 print(setRotate())
+
+def setvectob(tempvec):
+
+
