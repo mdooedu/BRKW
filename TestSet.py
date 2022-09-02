@@ -2,11 +2,20 @@ import random
 import maya.cmds as cmds
 
 
-targetcount = int(input("targetcount"))
+targetcount = list(range(int(input("targetcount"))))
+
+print(targetcount)
 
 for ctemp in targetcount:
     tempvec = [0, 90, 0]
-    temp = 0
-    i = temp + 1
+    bfoloc = [cmds.getAttr("BRK" + ctemp - 1 + "translate")]
+    cmds.duplicate("BRK" + ctemp)
+    cmds.setAttr("BRK" + ctemp + ".rotate")
+    templocc = bfoloc.pop[-1] + mvloc
+    chgloc = bfoloc.append(templocc)
+    cmds.setAttr("BRK" + ctemp + ".translate", chgloc)
 
-#    cmds.setAttr("BRK" + i + ".rotate")
+    if ctemp == targetcount[-1]:
+        break
+
+print(ctemp)
